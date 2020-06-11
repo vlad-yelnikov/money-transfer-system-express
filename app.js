@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const mongoConnect = require('./src/db/connection');
+const mongoConnect = require('./src/db/index');
 
 const routes = require('./src/routes');
 
