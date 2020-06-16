@@ -21,6 +21,7 @@ body:
 {
 	user: User.id,
 }
+
 Get /api/cards/{cardId} - return some card
 
 Delete /api/cards/{cardId} - delete card
@@ -32,6 +33,7 @@ Put /api/cards/decrease/{cardId}
 		amount: 100,
 		
 	}
+	
 Put /api/cards/creditLimit/{cardId}
 body 
 	{   
