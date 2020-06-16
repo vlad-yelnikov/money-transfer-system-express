@@ -10,5 +10,14 @@ class UserController {
     const result = await userService.delete(id);
     res.sendStatus(result ? 200 : 404);
   }
+
+  async paginate({ query: { page = 1, size = 10 } = {}, res }) {
+    try {
+      const response = await userService.paginate(page, size);
+      res.json(response);
+    } catch (e) {
+      res.sendStatus(400);
+    }
+  }
 }
 module.exports = new UserController();
