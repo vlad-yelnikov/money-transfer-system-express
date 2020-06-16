@@ -6,6 +6,10 @@ class UserService {
     user.save();
     return user;
   }
+
+  async delete(id) {
+    return UserModel.findByIdAndRemove(id);
+  }
 }
 
 module.exports = new UserService();
