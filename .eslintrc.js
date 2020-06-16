@@ -1,1 +1,4 @@
-module.exports = { "extends": "airbnb-base" };
+module.exports = {
+  extends: 'airbnb-base',
+  rules: { 'class-methods-use-this': 0 },
+};
