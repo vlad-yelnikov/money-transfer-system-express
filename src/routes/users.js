@@ -11,4 +11,6 @@ router.post('/', userController.create);
 
 router.delete('/:id', userController.delete);
 
+router.get('/search', userController.paginate);
+
 module.exports = router;
