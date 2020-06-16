@@ -1,6 +1,6 @@
 # money-counting-system
 
-Users
+# Users
 Get /api/users/search?name={name}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount}
 
 Post /api/users - create user
@@ -13,7 +13,7 @@ Delete /api/users/{userId} - delete user
 
 ------------------------
 
-Cards
+# Cards
 Get /api/cards/search?debitfrom={from}&debitto={to}&creditfrom={from}&creditto={to}&creditlimitfrom={from}&creditlimitto={to}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount} - return list of cards
 
 Post /api/cards - create card
@@ -43,7 +43,7 @@ body
 
 ------------------------- add Put / create actions
 
-Transactions
+# Transactions
 
 
 Get api/transactions/search?q={queryString}&category={category}&datefrom={from}&dateto={to}&amountfrom={amount}&amountto={amount}&type={type}&card={cardId}&description={desc}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount}- filter 
