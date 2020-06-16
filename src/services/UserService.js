@@ -1,11 +1,11 @@
-const userModel = require('../models/index');
+const UserModel = require('../models');
 
 class UserService {
   create(userData) {
-    const user = new userModel(userData);
+    const user = new UserModel(userData);
     user.save();
     return user;
   }
 }
 
-module.exports = UserService;
+module.exports = new UserService();

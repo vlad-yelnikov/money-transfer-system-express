@@ -1,9 +1,9 @@
-const UserService = require('../services');
+const userService = require('../services');
 
 class UserController {
   create(req, res, next) {
-    const user = UserService.create(req.body);
+    const user = userService.create(req.body);
     res.json(user);
   }
 }
-module.exports = UserController;
+module.exports = new UserController();
