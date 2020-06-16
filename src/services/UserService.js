@@ -6,6 +6,16 @@ class UserService {
     user.save();
     return user;
   }
+
+  delete(id) {
+    return UserModel.findByIdAndRemove(id);
+  }
+
+  paginate(page, size) {
+    return UserModel.find()
+      .limit(+size)
+      .skip((page - 1) * size);
+  }
 }
 
 module.exports = new UserService();
