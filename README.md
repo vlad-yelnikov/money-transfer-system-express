@@ -1,7 +1,7 @@
 # money-counting-system
 
 Users
-Get /api/users/search?name={name}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount} //rename  // add Filtering and paginations
+Get /api/users/search?name={name}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount}
 
 Post /api/users - create user
 
