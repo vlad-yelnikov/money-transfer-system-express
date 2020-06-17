@@ -13,6 +13,8 @@ class UserService {
 
   update(id, body) {
     return UserModel.findByIdAndUpdate(id, body);
+  }
+
   getAll() {
     return UserModel.find();
   }
