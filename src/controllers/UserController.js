@@ -1,9 +1,14 @@
 const userService = require('../services');
 
 class UserController {
-  create(req, res) {
-    const user = userService.create(req.body);
+  async create(req, res) {
+    const user = await userService.create(req.body);
     res.json(user);
+  }
+
+  async readAll(req, res) {
+    const response = await userService.readAll();
+    res.json(response);
   }
 
   async delete({ params: { id } = {} }, res) {
