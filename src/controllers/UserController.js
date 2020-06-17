@@ -6,9 +6,9 @@ class UserController {
     res.json(user);
   }
 
-  async update({ params: { id } = {} }, req, res, next) {
-    await userService.update(id, req.body);
-    res.sendStatus(200);
+  async update({ params: { id } = {}, body }, res) {
+    const response = await userService.update(id, body);
+    res.sendStatus(response ? 200 : 404);
   }
 
   async delete({ params: { id } = {} }, res) {

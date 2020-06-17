@@ -7,8 +7,8 @@ class UserService {
     return user;
   }
 
-  update(id, userData) {
-    return UserModel.findByIdAndUpdate(id, userData);
+  update(id, body) {
+    return UserModel.findByIdAndUpdate(id, body);
   }
 
   delete(id) {
