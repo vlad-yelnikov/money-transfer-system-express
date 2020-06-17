@@ -11,6 +11,8 @@ class UserService {
     return user;
   }
 
+  update(id, body) {
+    return UserModel.findByIdAndUpdate(id, body);
   getAll() {
     return UserModel.find();
   }
