@@ -1,6 +1,10 @@
 const UserModel = require('../models');
 
 class UserService {
+  get(id) {
+    return UserModel.findById(id);
+  }
+
   create(userData) {
     const user = new UserModel(userData);
     user.save();
@@ -9,16 +13,24 @@ class UserService {
 
   update(id, body) {
     return UserModel.findByIdAndUpdate(id, body);
+  getAll() {
+    return UserModel.find();
   }
 
   delete(id) {
     return UserModel.findByIdAndRemove(id);
   }
 
-  paginate(page, size) {
-    return UserModel.find()
-      .limit(+size)
-      .skip((page - 1) * size);
+  search({
+    page,
+    size,
+    order,
+    sort,
+  }) {
+    const skip = (page - 1) * size;
+    return UserModel.find({}, null, { limit: +size, skip }).sort({
+      [sort]: order,
+    });
   }
 }
 
