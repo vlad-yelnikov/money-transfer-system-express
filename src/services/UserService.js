@@ -7,6 +7,10 @@ class UserService {
     return user;
   }
 
+  update(id, userData) {
+    return UserModel.findByIdAndUpdate(id, userData);
+  }
+
   delete(id) {
     return UserModel.findByIdAndRemove(id);
   }

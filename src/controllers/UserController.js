@@ -6,6 +6,11 @@ class UserController {
     res.json(user);
   }
 
+  async update({ params: { id } = {} }, req, res, next) {
+    await userService.update(id, req.body);
+    res.sendStatus(200);
+  }
+
   async delete({ params: { id } = {} }, res) {
     const result = await userService.delete(id);
     res.sendStatus(result ? 200 : 404);
