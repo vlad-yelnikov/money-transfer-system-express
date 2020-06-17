@@ -29,17 +29,17 @@ Delete /api/cards/{cardId} - delete card
 Put /api/cards/increase/{cardId} // 
 Put /api/cards/decrease/{cardId}
 	body 
-	{   
+	`{   
 		amount: 100,
 		
-	}
+	}`
 	
 Put /api/cards/creditLimit/{cardId}
 body 
-	{   
+	`{   
 		amount: 100,
 		
-	}
+	}`
 
 ------------------------- add Put / create actions
 
@@ -53,14 +53,14 @@ Get api/transactions/{transactionId}
 
 Post api/transactions
 body:
-{
+`{
 	sender: Card.id,
 	reciever: Card.id,
 	amount: Number,
 	description: String,
 	category: String
 
-}
+}`
 
 Post api/transactions/rollback/{transactionId}
 
