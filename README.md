@@ -39,7 +39,6 @@ body
 		amount: 100,
 	}` 
 
-------------------------- add Put / create actions
 
 # Transactions
 
