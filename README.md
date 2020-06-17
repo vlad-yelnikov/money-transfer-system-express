@@ -18,9 +18,7 @@ Get /api/cards/search?debitfrom={from}&debitto={to}&creditfrom={from}&creditto={
 
 Post /api/cards - create card
 body:
-`{
-	user: User.id,
-}`
+`{	user: User.id}`
 
 Get /api/cards/{cardId} - return some card
 
