@@ -1,11 +1,10 @@
 const express = require('express');
 const userController = require('../controllers');
+const UserController = require('../controllers/UserController');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('respond with a resource');
-});
+router.get('/', UserController.readAll);
 
 router.post('/', userController.create);
 
