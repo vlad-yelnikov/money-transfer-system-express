@@ -11,10 +11,13 @@ class UserService {
     return UserModel.findByIdAndRemove(id);
   }
 
-  paginate(page, size) {
-    return UserModel.find()
-      .limit(+size)
-      .skip((page - 1) * size);
+  search({
+    page, size, order, sort,
+  }) {
+    const skip = (page - 1) * size;
+    return UserModel.find({}, null, { limit: +size, skip }).sort({
+      [sort]: order,
+    });
   }
 }
 
