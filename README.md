@@ -1,15 +1,15 @@
 # money-counting-system
 
 # Users
-[Get] /api/users/search?name={name}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount}
+[] GET /api/users/search?name={name}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount}
 
-Post /api/users - create user
+[] POST /api/users - create user
 
-Get /api/users/{userId} - return some user
+[] GET /api/users/{userId} - return some user
 
-Put /api/users/{userId} - update user object
+[] PUT /api/users/{userId} - update user object
 
-Delete /api/users/{userId} - delete user
+[] Delete /api/users/{userId} - delete user
 
 ------------------------
 
