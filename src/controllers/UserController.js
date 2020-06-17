@@ -16,9 +16,18 @@ class UserController {
     res.sendStatus(result ? 200 : 404);
   }
 
-  async paginate({ query: { page = 1, size = 10 } = {}, res }) {
+  async search({
+    query: {
+      page = 1, size = 10, order, sort,
+    } = {}, res,
+  }) {
     try {
-      const response = await userService.paginate(page, size);
+      const response = await userService.search({
+        page,
+        size,
+        order,
+        sort,
+      });
       res.json(response);
     } catch (e) {
       res.sendStatus(400);
