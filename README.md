@@ -18,26 +18,26 @@ Get /api/cards/search?debitfrom={from}&debitto={to}&creditfrom={from}&creditto={
 
 Post /api/cards - create card
 body:
-`{	user: User.id}`
+	`{
+		user: User.id
+	}`
 
 Get /api/cards/{cardId} - return some card
 
 Delete /api/cards/{cardId} - delete card
 
-Put /api/cards/increase/{cardId} // 
+Put /api/cards/increase/{cardId} 
 Put /api/cards/decrease/{cardId}
 	body 
 	`{   
-		amount: 100,
-		
+		amount: 100,	
 	}`
 	
 Put /api/cards/creditLimit/{cardId}
 body 
 	`{   
 		amount: 100,
-		
-	}`
+	}` 
 
 ------------------------- add Put / create actions
 
@@ -57,7 +57,6 @@ body:
 	amount: Number,
 	description: String,
 	category: String
-
 }`
 
 Post api/transactions/rollback/{transactionId}
