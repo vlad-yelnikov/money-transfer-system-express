@@ -12,11 +12,6 @@ class UserController {
     res.json(user);
   }
 
-  async update({ params: { id } = {}, body }, res) {
-    const response = await userService.update(id, body);
-    res.sendStatus(response ? 200 : 404);
-  }
-
   async getAll(req, res) {
     const response = await userService.getAll();
     res.json(response);
