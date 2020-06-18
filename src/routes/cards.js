@@ -14,6 +14,6 @@ router.put('/:id', cardController.update);
 
 router.delete('/:id', cardController.delete);
 
-// router.get('/search', cardController.search);
+router.get('/search', cardController.search);
 
 module.exports = router;
