@@ -1,26 +1,26 @@
-const UserModel = require('../models');
+const CardModel = require('../models');
 
 class CardService {
   get(id) {
-    return UserModel.findById(id);
+    return CardModel.findById(id);
   }
 
   create(cardData) {
-    const user = new UserModel(cardData);
-    user.save();
-    return user;
+    const card = new CardModel(cardData);
+    card.save();
+    return card;
   }
 
   update(id, body) {
-    return UserModel.findByIdAndUpdate(id, body);
+    return CardModel.findByIdAndUpdate(id, body);
   }
 
   getAll() {
-    return UserModel.find();
+    return CardModel.find();
   }
 
   delete(id) {
-    return UserModel.findByIdAndRemove(id);
+    return CardModel.findByIdAndRemove(id);
   }
 
   search({
@@ -30,7 +30,7 @@ class CardService {
     sort,
   }) {
     const skip = (page - 1) * size;
-    return UserModel.find({}, null, { limit: +size, skip }).sort({
+    return CardModel.find({}, null, { limit: +size, skip }).sort({
       [sort]: order,
     });
   }
