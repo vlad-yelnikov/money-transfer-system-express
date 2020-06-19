@@ -1,36 +1,31 @@
-const userService = require('../services');
-// const MainController = require('./MainController');
+class MainController {
+  constructor(serviceName) {
+    this.service = serviceName;
+  }
 
-// class UserController extends MainController {
-//   constructor() {
-//     super(userService);
-//   }
-// }
-
-class UserController {
   async get({ params: { id } = {} }, res) {
-    const response = await userService.get(id);
+    const response = await this.service.get(id);
     res.json(response);
     res.sendStatus(response ? 200 : 404);
   }
 
   async create(req, res) {
-    const user = await userService.create(req.body);
+    const user = await this.service.create(req.body);
     res.json(user);
   }
 
   async update({ params: { id } = {}, body }, res) {
-    const response = await userService.update(id, body);
+    const response = await this.service.update(id, body);
     res.sendStatus(response ? 200 : 404);
   }
 
   async getAll(req, res) {
-    const response = await userService.getAll();
+    const response = await this.service.getAll();
     res.json(response);
   }
 
   async delete({ params: { id } = {} }, res) {
-    const result = await userService.delete(id);
+    const result = await this.service.delete(id);
     res.sendStatus(result ? 200 : 404);
   }
 
@@ -44,7 +39,7 @@ class UserController {
     res,
   }) {
     try {
-      const response = await userService.search({
+      const response = await this.service.search({
         page,
         size,
         order,
@@ -56,4 +51,4 @@ class UserController {
     }
   }
 }
-module.exports = new UserController();
+module.exports = MainController;
