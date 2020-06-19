@@ -8,9 +8,8 @@ class MainService {
   }
 
   create(Data) {
-    const user = new this.Model(Data);
-    user.save();
-    return user;
+    console.log(this.Model);
+    return this.Model.create(Data);
   }
 
   update(id, body) {

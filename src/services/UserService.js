@@ -1,12 +1,8 @@
-const UserModel = require('../models');
+const { user } = require('../models');
 
 const MainService = require('./MainService');
 
-class UserService extends MainService {
-  constructor() {
-    super(UserModel);
-  }
-}
+class UserService extends MainService {}
 
 // class UserService {
 //   get(id) {
@@ -44,4 +40,4 @@ class UserService extends MainService {
 //   }
 // }
 
-module.exports = new UserService();
+module.exports = new UserService(user);
