@@ -1,10 +1,9 @@
 const express = require('express');
-const cardController = require('../controllers');
-const CardController = require('../controllers/CardController');
+const { cardController } = require('../controllers');
 
 const router = express.Router();
 
-router.get('/', CardController.getAll);
+router.get('/', cardController.getAll);
 
 router.get('/:id', cardController.get);
 

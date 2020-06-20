@@ -1,4 +1,4 @@
-const cardService = require('../services');
+const { cardService } = require('../services');
 
 class CardController {
   async get({ params: { id } = {} }, res) {

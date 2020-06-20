@@ -8,7 +8,6 @@ class MainService {
   }
 
   create(Data) {
-    console.log(this.Model);
     return this.Model.create(Data);
   }
 
