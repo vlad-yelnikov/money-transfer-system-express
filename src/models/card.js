@@ -20,9 +20,12 @@ const card = new Schema({
     required: true,
   },
   user: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
   },
+},
+{
+  strict: 'throw',
 });
 
 module.exports = mongoose.model('card', card);
