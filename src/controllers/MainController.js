@@ -9,7 +9,7 @@ class MainController {
     res.sendStatus(response ? 200 : 404);
   }
 
-  async create({body}, res) {
+  async create({ body }, res) {
     const user = await this.service.create(body);
     res.json(user);
   }
