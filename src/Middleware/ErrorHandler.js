@@ -3,7 +3,7 @@ function errorHandler(err, req, res, next) {
     return next(err);
   }
   return res.status(err.status || 400).json({
-    error: err,
+    error: err.message,
   });
 }
 
