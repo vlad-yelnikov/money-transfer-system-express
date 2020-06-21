@@ -3,16 +3,16 @@ const { userController } = require('../controllers');
 
 const router = express.Router();
 
-router.get('/', userController.getAll);
+router.get('/', userController.getAll.bind(userController));
 
-router.get('/:id', userController.get);
+router.get('/:id', userController.get.bind(userController));
 
-router.post('/', userController.create);
+router.post('/', userController.create.bind(userController));
 
-router.put('/:id', userController.update);
+router.put('/:id', userController.update.bind(userController));
 
-router.delete('/:id', userController.delete);
+router.delete('/:id', userController.delete.bind(userController));
 
-router.get('/search', userController.search);
+router.get('/search', userController.search.bind(userController));
 
 module.exports = router;
