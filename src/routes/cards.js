@@ -3,7 +3,7 @@ const { cardController } = require('../controllers');
 
 const router = express.Router();
 
-router.get('/', cardController.getAll.bind(cardController));
+router.get('/', (req, res, next)=> cardController.getAll(req, res, next) );
 
 router.get('/:id', cardController.get.bind(cardController));
 
