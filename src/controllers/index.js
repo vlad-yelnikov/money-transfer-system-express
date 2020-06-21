@@ -1,3 +1,4 @@
-const UserController = require('./UserController');
+const userController = require('./UserController');
+const cardController = require('./CardController');
 
-module.exports = UserController;
+module.exports = { userController, cardController };
