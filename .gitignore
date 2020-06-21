@@ -1,2 +1,6 @@
 /.env
 node_modules
+bash.exe.stackdump
+sh.exe.stackdump
+.DS_Store
+.vscode
