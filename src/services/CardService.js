@@ -50,8 +50,8 @@ class CardService extends MainService {
         _.identity,
       ),
     };
-    const arrOfFilter = _.omitBy(rawFilter, _.isEmpty);
-    return arrOfFilter;
+
+    return _.omitBy(rawFilter, _.isEmpty);
   }
 }
 
