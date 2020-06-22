@@ -25,7 +25,7 @@ class MainService {
 
   search({
     page = 1,
-    size = 3,
+    size = 10,
     order,
     sort,
   }, filter = {}) {
