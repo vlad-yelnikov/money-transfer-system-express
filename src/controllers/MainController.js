@@ -63,23 +63,11 @@ class MainController {
     }
   }
 
-  async search({
-    query: {
-      page = 1,
-      size = 10,
-      order,
-      sort,
-    } = {},
+  async search({ query } = {},
     res,
-    next,
-  }) {
+    next) {
     try {
-      const response = await this.service.search({
-        page,
-        size,
-        order,
-        sort,
-      });
+      const response = await this.service.search(query);
       res.json(response);
     } catch (e) {
       next(e);
