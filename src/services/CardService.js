@@ -15,6 +15,26 @@ class CardService extends MainService {
     creditlimitfrom,
     creditlimitto,
   }) {
+    const filter = this._formatFilter(debitfrom,
+      debitto,
+      creditfrom,
+      creditto,
+      creditlimitfrom,
+      creditlimitto);
+    return super.search({
+      page,
+      size,
+      order,
+      sort,
+    }, filter);
+  }
+
+  _formatFilter(debitfrom,
+    debitto,
+    creditfrom,
+    creditto,
+    creditlimitfrom,
+    creditlimitto) {
     const rawFilter = {
       debit: _.pickBy({ $gte: debitfrom, $lte: debitto }, _.identity),
       credit: _.pickBy({ $gte: creditfrom, $lte: creditto }, _.identity),
@@ -25,13 +45,7 @@ class CardService extends MainService {
         return [key, value];
       }
     }).filter((value) => !!value);
-    const filter = Object.fromEntries(arrOfFilter);
-    return super.search({
-      page,
-      size,
-      order,
-      sort,
-    }, filter);
+    return Object.fromEntries(arrOfFilter);
   }
 }
 
