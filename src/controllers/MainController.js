@@ -3,51 +3,74 @@ class MainController {
     this.service = serviceName;
   }
 
-  async get({ params: { id } = {} }, res) {
-    const response = await this.service.get(id);
-    res.json(response);
-    res.sendStatus(response ? 200 : 404);
-  }
-
-  async create({ body }, res) {
-    const user = await this.service.create(body);
-    res.json(user);
-  }
-
-  async update({ params: { id } = {}, body }, res) {
-    const response = await this.service.update(id, body);
-    res.sendStatus(response ? 200 : 404);
-  }
-
-  async getAll(req, res) {
-    const response = await this.service.getAll();
-    res.json(response);
-  }
-
-  async delete({ params: { id } = {} }, res) {
-    const result = await this.service.delete(id);
-    res.sendStatus(result ? 200 : 404);
-  }
-
-  async search({
-    query: {
-      page = 1,
-      size = 10,
-      order,
-      sort,
-    } = {},
-    res,
-  }) {
+  async get({ params: { id } = {} }, res, next) {
     try {
-      const response = await this.service.search({
-        page,
-        size,
-        order,
-        sort,
-      });
+      const response = await this.service.get(id);
+      if (!response) {
+        const err = new Error('Not found');
+        err.status = 404;
+        throw err;
+      }
       res.json(response);
     } catch (e) {
-      res.sendStatus(400);
+      next(e);
+    }
+  }
+
+  async create({ body }, res, next) {
+    try {
+      const user = await this.service.create(body);
+      res.json(user);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async update({ params: { id } = {}, body }, res, next) {
+    try {
+      const response = await this.service.update(id, body);
+      if (!response) {
+        const err = new Error('Not found');
+        err.status = 404;
+        throw err;
+      }
+      res.sendStatus(200);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async getAll(req, res, next) {
+    try {
+      const response = await this.service.getAll();
+      res.json(response);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async delete({ params: { id } = {} }, res, next) {
+    try {
+      const response = await this.service.delete(id);
+      if (!response) {
+        const err = new Error('Not found');
+        err.status = 404;
+        throw err;
+      }
+      res.sendStatus(200);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async search({ query } = {},
+    res,
+    next) {
+    try {
+      const response = await this.service.search(query);
+      res.json(response);
+    } catch (e) {
+      next(e);
     }
   }
 }

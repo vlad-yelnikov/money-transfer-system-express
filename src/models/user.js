@@ -7,6 +7,9 @@ const user = new Schema({
     type: String,
     required: true,
   },
+},
+{
+  strict: 'throw',
 });
 
 module.exports = mongoose.model('user', user);
