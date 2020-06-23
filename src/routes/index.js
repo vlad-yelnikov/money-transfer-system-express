@@ -1,7 +1,7 @@
 const express = require('express');
 const users = require('./users');
 const cards = require('./cards');
-const errorHandler = require('../Middleware/ErrorHandler');
+const errorHandler = require('../middleware/ErrorHandler');
 
 const router = express.Router();
 

@@ -3,14 +3,18 @@ class MainController {
     this.service = serviceName;
   }
 
+  responseCheck(response) {
+    if (!response) {
+      const err = new Error('Not found');
+      err.status = 404;
+      throw err;
+    }
+  }
+
   async get({ params: { id } = {} }, res, next) {
     try {
       const response = await this.service.get(id);
-      if (!response) {
-        const err = new Error('Not found');
-        err.status = 404;
-        throw err;
-      }
+      this.responseCheck(response);
       res.json(response);
     } catch (e) {
       next(e);
@@ -29,11 +33,7 @@ class MainController {
   async update({ params: { id } = {}, body }, res, next) {
     try {
       const response = await this.service.update(id, body);
-      if (!response) {
-        const err = new Error('Not found');
-        err.status = 404;
-        throw err;
-      }
+      this.responseCheck(response);
       res.sendStatus(200);
     } catch (e) {
       next(e);
@@ -52,20 +52,14 @@ class MainController {
   async delete({ params: { id } = {} }, res, next) {
     try {
       const response = await this.service.delete(id);
-      if (!response) {
-        const err = new Error('Not found');
-        err.status = 404;
-        throw err;
-      }
+      this.responseCheck(response);
       res.sendStatus(200);
     } catch (e) {
       next(e);
     }
   }
 
-  async search({ query } = {},
-    res,
-    next) {
+  async search({ query } = {}, res, next) {
     try {
       const response = await this.service.search(query);
       res.json(response);
@@ -74,4 +68,5 @@ class MainController {
     }
   }
 }
+
 module.exports = MainController;
