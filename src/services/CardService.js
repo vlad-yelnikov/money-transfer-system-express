@@ -53,6 +53,18 @@ class CardService extends MainService {
 
     return _.omitBy(rawFilter, _.isEmpty);
   }
+
+  increase(id, body) {
+    return this.Model.findByIdAndUpdate(id, body);
+  }
+
+  decrease(id, body) {
+    return this.Model.findByIdAndUpdate(id, body);
+  }
+
+  setLimit(id, body) {
+    return this.Model.findByIdAndUpdate(id, body);
+  }
 }
 
 module.exports = new CardService(card);
