@@ -11,7 +11,11 @@ router.get('/:id', (req, res, next) => cardController.get(req, res, next));
 
 router.post('/', (req, res, next) => cardController.create(req, res, next));
 
-router.put('/:id', (req, res, next) => cardController.update(req, res, next));
+router.patch('/increase/:id', (req, res, next) => cardController.increase(req, res, next));
+
+router.patch('/decrease/:id', (req, res, next) => cardController.decrease(req, res, next));
+
+router.patch('/setLimit/:id', (req, res, next) => cardController.setLimit(req, res, next));
 
 router.delete('/:id', (req, res, next) => cardController.delete(req, res, next));
 
