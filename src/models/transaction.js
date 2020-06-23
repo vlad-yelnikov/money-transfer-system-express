@@ -6,12 +6,12 @@ const transaction = new Schema(
   {
     sender: {
       type: Schema.Types.ObjectId,
-      ref: 'user',
+      ref: 'card',
       required: true,
     },
     receiver: {
       type: Schema.Types.ObjectId,
-      ref: 'user',
+      ref: 'card',
       required: true,
     },
     amount: {
@@ -22,7 +22,7 @@ const transaction = new Schema(
   },
   {
     strict: 'throw',
-  },
+  }
 );
 
 module.exports = mongoose.model('transaction', transaction);
