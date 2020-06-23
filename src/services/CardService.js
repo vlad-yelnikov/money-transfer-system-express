@@ -55,15 +55,15 @@ class CardService extends MainService {
   }
 
   increase(id, body) {
-    return this.Model.findByIdAndUpdate(id, body);
+    return this.Model.findByIdAndUpdate(id, { debit: body.debit });
   }
 
   decrease(id, body) {
-    return this.Model.findByIdAndUpdate(id, body);
+    return this.Model.findByIdAndUpdate(id, { debit: body.debit });
   }
 
   setLimit(id, body) {
-    return this.Model.findByIdAndUpdate(id, body);
+    return this.Model.findByIdAndUpdate(id, { creditLimit: body.creditLimit });
   }
 }
 
