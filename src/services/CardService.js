@@ -63,7 +63,12 @@ class CardService extends MainService {
   }
 
   setLimit(id, body) {
-    return this.Model.findByIdAndUpdate(id, { creditLimit: body.creditLimit });
+    if (typeof body.creditLimit === 'number') {
+      return this.Model.findByIdAndUpdate(id, {
+        creditLimit: body.creditLimit,
+      });
+    }
+    return this.Model;
   }
 }
 
