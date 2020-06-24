@@ -55,18 +55,22 @@ class CardService extends MainService {
   }
 
   increase(id, body) {
-    return this.Model.findByIdAndUpdate(id, { debit: body.debit });
+    if (typeof body.debit === 'number') {
+      return this.Model.findByIdAndUpdate(id, { $inc: { debit: body.debit } });
+    }
+    return this.Model;
   }
 
   decrease(id, body) {
-    return this.Model.findByIdAndUpdate(id, { debit: body.debit });
+    if (typeof body.debit === 'number') {
+      return this.Model.findByIdAndUpdate(id, { $inc: { debit: -body.debit } });
+    }
+    return this.Model;
   }
 
   setLimit(id, body) {
     if (typeof body.creditLimit === 'number') {
-      return this.Model.findByIdAndUpdate(id, {
-        creditLimit: body.creditLimit,
-      });
+      return this.Model.findByIdAndUpdate(id, { creditLimit: body.creditLimit });
     }
     return this.Model;
   }
