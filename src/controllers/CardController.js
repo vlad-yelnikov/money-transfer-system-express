@@ -4,7 +4,7 @@ const MainController = require('./MainController');
 class CardController extends MainController {
   async increase({ params: { id } = {}, body }, res, next) {
     try {
-      const response = await this.service.increase(id, body);
+      const response = await this.service.increase(id, body.value);
       this.responseCheck(response);
       res.sendStatus(200);
     } catch (e) {
@@ -14,7 +14,7 @@ class CardController extends MainController {
 
   async decrease({ params: { id } = {}, body }, res, next) {
     try {
-      const response = await this.service.decrease(id, body);
+      const response = await this.service.decrease(id, body.value);
       this.responseCheck(response);
       res.sendStatus(200);
     } catch (e) {
@@ -24,7 +24,7 @@ class CardController extends MainController {
 
   async setLimit({ params: { id } = {}, body }, res, next) {
     try {
-      const response = await this.service.setLimit(id, body);
+      const response = await this.service.setLimit(id, body.value);
       this.responseCheck(response);
       res.sendStatus(200);
     } catch (e) {
