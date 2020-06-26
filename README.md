@@ -14,7 +14,7 @@
 ------------------------
 
 # Cards
-**GET** /api/cards/search?debitfrom={from}&debitto={to}&creditfrom={from}&creditto={to}&creditlimitfrom={from}&creditlimitto={to}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount} - return list of cards
+**GET** /api/cards/search?userid={userId}&debitfrom={from}&debitto={to}&creditfrom={from}&creditto={to}&creditlimitfrom={from}&creditlimitto={to}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount} - return list of cards
 
 **POST** /api/cards - create card
 body:
@@ -27,13 +27,14 @@ body:
 **DELETE** /api/cards/{cardId} - delete card
 
 **PUT** /api/cards/increase/{cardId} 
-**PUT** /api/cards/decrease/{cardId}
+
+**PATCH** /api/cards/decrease/{cardId}
 	body 
 	`{   
 		amount: 100,	
 	}`
 	
-**PUT** /api/cards/creditLimit/{cardId}
+**PATCH** /api/cards/creditLimit/{cardId}
 body 
 	`{   
 		amount: 100,

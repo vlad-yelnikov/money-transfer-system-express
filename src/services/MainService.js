@@ -23,14 +23,13 @@ class MainService {
     return this.Model.findByIdAndRemove(id);
   }
 
-  search({
-    page = 1,
-    size = 10,
-    order,
-    sort,
-  }, filter = {}) {
+  search({ page = 1, size = 10, order, sort }, filter = {}) {
     const skip = (page - 1) * size;
-    return this.Model.find(filter, null, { limit: +size, skip, sort: { [sort]: order } });
+    return this.Model.find(filter, null, {
+      limit: +size,
+      skip,
+      sort: { [sort]: order },
+    });
   }
 }
 
