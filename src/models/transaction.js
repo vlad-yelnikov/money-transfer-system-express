@@ -19,10 +19,15 @@ const transaction = new Schema(
       min: 1,
       required: true,
     },
+    date: {
+      type: Date,
+      default: Date.now,
+      required: true,
+    },
   },
   {
     strict: 'throw',
-  },
+  }
 );
 
 module.exports = mongoose.model('transaction', transaction);
