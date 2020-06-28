@@ -64,12 +64,16 @@ class CardService extends MainService {
   }
 
   decrease(id, value) {
-    if (typeof value === 'number' && value > 0) {
-      return this.Model.findByIdAndUpdate(id, { $inc: { debit: -value } });
-    }
-    const err = new Error('Bad request');
-    err.status = 400;
-    throw err;
+    return this.Model.findById(id, (err, doc) => {
+      if (err) {
+        const err = new Error('Bad request');
+        err.status = 400;
+        throw err;
+      } else {
+        doc.debit -= value;
+        doc.save();
+      }
+    });
   }
 
   setLimit(id, value) {
