@@ -69,10 +69,9 @@ class CardService extends MainService {
         const err = new Error('Bad request');
         err.status = 400;
         throw err;
-      } else {
-        doc.debit -= value;
-        doc.save();
       }
+      doc.debit -= value;
+      doc.save();
     });
   }
 
