@@ -24,7 +24,7 @@ class MainService {
   }
 
   search({
-    page = 1, size = 10, order, sort,
+    page, size, order, sort,
   }, filter = {}) {
     const skip = (page - 1) * size;
     return this.Model.find(filter, null, {

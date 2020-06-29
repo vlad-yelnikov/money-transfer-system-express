@@ -27,7 +27,7 @@ const transaction = new Schema(
   },
   {
     strict: 'throw',
-  }
+  },
 );
 
 module.exports = mongoose.model('transaction', transaction);

@@ -7,6 +7,8 @@ router.get('/search', (req, res, next) => transactionController.search(req, res,
 
 router.get('/:id', (req, res, next) => transactionController.get(req, res, next));
 
+router.get('/', (req, res, next) => transactionController.getAll(req, res, next));
+
 router.post('/', (req, res, next) => transactionController.create(req, res, next));
 
 module.exports = router;

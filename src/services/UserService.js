@@ -18,4 +18,5 @@ class UserService extends MainService {
     );
   }
 }
+
 module.exports = new UserService(user);
