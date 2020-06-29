@@ -13,17 +13,17 @@ const card = new Schema(
     debit: {
       type: Number,
       min: 0,
-      required: true,
+      default: 0,
     },
     credit: {
       type: Number,
       min: 0,
-      required: true,
+      default: 0,
     },
     creditLimit: {
       type: Number,
       min: 0,
-      required: true,
+      default: 0,
     },
     user: {
       type: Schema.Types.ObjectId,
