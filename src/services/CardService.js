@@ -53,6 +53,33 @@ class CardService extends MainService {
 
     return _.omitBy(rawFilter, _.isEmpty);
   }
+
+  increase(id, value) {
+    if (typeof value === 'number' && value > 0) {
+      return this.Model.findByIdAndUpdate(id, { $inc: { debit: value } });
+    }
+    const err = new Error('Bad request');
+    err.status = 400;
+    throw err;
+  }
+
+  decrease(id, value) {
+    if (typeof value === 'number' && value > 0) {
+      return this.Model.findByIdAndUpdate(id, { $inc: { debit: -value } });
+    }
+    const err = new Error('Bad request');
+    err.status = 400;
+    throw err;
+  }
+
+  setLimit(id, value) {
+    if (typeof creditLimit === 'number' && value > 0) {
+      return this.Model.findByIdAndUpdate(id, { creditLimit: value });
+    }
+    const err = new Error('Bad request');
+    err.status = 400;
+    throw err;
+  }
 }
 
 module.exports = new CardService(card);
