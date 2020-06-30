@@ -97,11 +97,14 @@ class CardService extends MainService {
   async setLimit(id, value) {
     const cardDoc = await this.Model.findById(id);
     if (!cardDoc) return;
-    if (value) {
-      cardDoc.creditLimit = value;
-      await cardDoc.save();
-      return cardDoc;
+    if (!value) {
+      const err = new Error('Bad request');
+      err.status = 400;
+      throw err;
     }
+    cardDoc.creditLimit = value;
+    await cardDoc.save();
+    return cardDoc;
   }
 }
 
