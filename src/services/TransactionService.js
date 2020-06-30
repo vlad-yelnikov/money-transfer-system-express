@@ -30,7 +30,8 @@ class TransactionService extends MainService {
 
   async rollback(id, flag) {
     const abortedTransaction = await this.Model.findById(id);
-    if (!abortedTransaction) return;
+    if (abortedTransaction.isAborted === true) return;
+
     abortedTransaction.isAborted = flag;
     await this.cardService.increaseDebit(
       abortedTransaction.sender,
