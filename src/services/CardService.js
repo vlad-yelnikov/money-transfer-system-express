@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const _ = require('lodash');
 const { card } = require('../models');
 const MainService = require('./MainService');
@@ -93,13 +94,17 @@ class CardService extends MainService {
     return cardDoc;
   }
 
-  setLimit(id, value) {
-    if (typeof creditLimit === 'number' && value > 0) {
-      return this.Model.findByIdAndUpdate(id, { creditLimit: value });
+  async setLimit(id, value) {
+    const cardDoc = await this.Model.findById(id);
+    if (!cardDoc) return;
+    if (!value) {
+      const err = new Error('Bad request');
+      err.status = 400;
+      throw err;
     }
-    const err = new Error('Bad request');
-    err.status = 400;
-    throw err;
+    cardDoc.creditLimit = value;
+    await cardDoc.save();
+    return cardDoc;
   }
 }
 
