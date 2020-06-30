@@ -44,7 +44,7 @@ body
 # Transactions
 
 
-**GET** api/transactions/search?q={queryString}&category={category}&datefrom={from}&dateto={to}&amountfrom={amount}&amountto={amount}&type={type}&card={cardId}&description={desc}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount}- filter 
+**GET** api/transactions/search?datefrom={from}&dateto={to}&amountfrom={amount}&amountto={amount}&card={cardId}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount}- filter 
 
 
 **GET** api/transactions/{transactionId}
@@ -55,8 +55,7 @@ body:
 	sender: Card.id,
 	reciever: Card.id,
 	amount: Number,
-	description: String,
-	category: String
+	date: Date
 }`
 
 **POST** api/transactions/rollback/{transactionId}
