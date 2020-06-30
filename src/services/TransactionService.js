@@ -28,6 +28,22 @@ class TransactionService extends MainService {
     return super.create(data);
   }
 
+  async rollback(id) {
+    const abortedTransaction = await this.Model.findById(id);
+    if (abortedTransaction.isAborted === true) return;
+    await this.cardService.decrease(
+      abortedTransaction.receiver,
+      abortedTransaction.amount
+    );
+    await this.cardService.increase(
+      abortedTransaction.sender,
+      abortedTransaction.amount
+    );
+    abortedTransaction.isAborted = true;
+    abortedTransaction.save();
+    return abortedTransaction;
+  }
+
   search({
     page,
     size,
@@ -44,7 +60,7 @@ class TransactionService extends MainService {
       dateto,
       amountfrom,
       amountto,
-      card,
+      card
     );
 
     return super.search(
@@ -54,7 +70,7 @@ class TransactionService extends MainService {
         order,
         sort,
       },
-      filter,
+      filter
     );
   }
 

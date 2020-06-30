@@ -24,6 +24,11 @@ const transaction = new Schema(
       default: Date.now,
       required: true,
     },
+    isAborted: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
   },
   {
     strict: 'throw',

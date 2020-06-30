@@ -11,4 +11,5 @@ router.get('/', (req, res, next) => transactionController.getAll(req, res, next)
 
 router.post('/', (req, res, next) => transactionController.create(req, res, next));
 
+router.delete('/rollback/:id', (req, res, next) => transactionController.rollback(req, res, next));
 module.exports = router;

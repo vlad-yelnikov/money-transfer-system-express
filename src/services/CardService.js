@@ -21,7 +21,7 @@ class CardService extends MainService {
       creditfrom,
       creditto,
       creditlimitfrom,
-      creditlimitto
+      creditlimitto,
     );
     return super.search(
       {
@@ -30,7 +30,7 @@ class CardService extends MainService {
         order,
         sort,
       },
-      filter
+      filter,
     );
   }
 
@@ -40,14 +40,14 @@ class CardService extends MainService {
     creditfrom,
     creditto,
     creditlimitfrom,
-    creditlimitto
+    creditlimitto,
   ) {
     const rawFilter = {
       debit: _.pickBy({ $gte: debitfrom, $lte: debitto }, _.identity),
       credit: _.pickBy({ $gte: creditfrom, $lte: creditto }, _.identity),
       creditLimit: _.pickBy(
         { $gte: creditlimitfrom, $lte: creditlimitto },
-        _.identity
+        _.identity,
       ),
     };
 
@@ -76,8 +76,7 @@ class CardService extends MainService {
   async decrease(id, value) {
     const cardDoc = await this.Model.findById(id);
     if (!cardDoc) return;
-    const notEnoughMoney =
-      value > cardDoc.debit + cardDoc.creditLimit - cardDoc.credit;
+    const notEnoughMoney = value > cardDoc.debit + cardDoc.creditLimit - cardDoc.credit;
     if (notEnoughMoney) {
       const err = new Error("You don't have enough money");
       err.status = 400;
