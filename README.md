@@ -58,6 +58,6 @@ body:
 	date: Date
 }`
 
-**POST** api/transactions/rollback/{transactionId}
+**DELETE** api/transactions/rollback/{transactionId}
 
 
