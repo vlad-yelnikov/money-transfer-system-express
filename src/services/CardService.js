@@ -101,32 +101,6 @@ class CardService extends MainService {
     err.status = 400;
     throw err;
   }
-
-  async increaseDebit(id, value) {
-    if (value < 0) {
-      const err = new Error('Bad request');
-      err.status = 400;
-      throw err;
-    }
-    const cardDoc = await this.Model.findById(id);
-    if (!cardDoc) return;
-    cardDoc.debit += value;
-    await cardDoc.save();
-    return cardDoc;
-  }
-
-  async increaseCredit(id, value) {
-    if (value < 0) {
-      const err = new Error('Bad request');
-      err.status = 400;
-      throw err;
-    }
-    const cardDoc = await this.Model.findById(id);
-    if (!cardDoc) return;
-    cardDoc.credit += value;
-    await cardDoc.save();
-    return cardDoc;
-  }
 }
 
 module.exports = new CardService(card);

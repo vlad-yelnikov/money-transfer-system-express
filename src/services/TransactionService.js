@@ -28,19 +28,18 @@ class TransactionService extends MainService {
     return super.create(data);
   }
 
-  async rollback(id, flag) {
+  async rollback(id) {
     const abortedTransaction = await this.Model.findById(id);
     if (abortedTransaction.isAborted === true) return;
-
-    abortedTransaction.isAborted = flag;
-    await this.cardService.increaseDebit(
-      abortedTransaction.sender,
-      abortedTransaction.amount,
-    );
-    await this.cardService.increaseCredit(
+    await this.cardService.decrease(
       abortedTransaction.receiver,
-      abortedTransaction.amount,
+      abortedTransaction.amount
     );
+    await this.cardService.increase(
+      abortedTransaction.sender,
+      abortedTransaction.amount
+    );
+    abortedTransaction.isAborted = true;
     abortedTransaction.save();
     return abortedTransaction;
   }
@@ -61,7 +60,7 @@ class TransactionService extends MainService {
       dateto,
       amountfrom,
       amountto,
-      card,
+      card
     );
 
     return super.search(
@@ -71,7 +70,7 @@ class TransactionService extends MainService {
         order,
         sort,
       },
-      filter,
+      filter
     );
   }
 
