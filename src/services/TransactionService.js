@@ -28,6 +28,22 @@ class TransactionService extends MainService {
     return super.create(data);
   }
 
+  async rollback(id, flag) {
+    const abortedTransaction = await this.Model.findById(id);
+    if (!abortedTransaction) return;
+    abortedTransaction.isAborted = flag;
+    await this.cardService.increaseDebit(
+      abortedTransaction.sender,
+      abortedTransaction.amount,
+    );
+    await this.cardService.increaseCredit(
+      abortedTransaction.receiver,
+      abortedTransaction.amount,
+    );
+    abortedTransaction.save();
+    return abortedTransaction;
+  }
+
   search({
     page,
     size,

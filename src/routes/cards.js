@@ -17,6 +17,9 @@ router.patch('/decrease/:id', (req, res, next) => cardController.decrease(req, r
 
 router.patch('/setLimit/:id', (req, res, next) => cardController.setLimit(req, res, next));
 
+router.patch('/increaseDebit/:id', (req, res, next) => cardController.increaseDebit(req, res, next));
+router.patch('/increaseCredit/:id', (req, res, next) => cardController.increaseCredit(req, res, next));
+
 router.delete('/:id', (req, res, next) => cardController.delete(req, res, next));
 
 module.exports = router;
