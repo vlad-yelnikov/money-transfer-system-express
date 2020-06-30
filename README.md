@@ -26,18 +26,22 @@ body:
 
 **DELETE** /api/cards/{cardId} - delete card
 
-**PUT** /api/cards/increase/{cardId} 
+**PATCH** /api/cards/increase/{cardId}
+body: 
+	`{   
+		value: 100,	
+	}` 
 
 **PATCH** /api/cards/decrease/{cardId}
-	body 
+body: 
 	`{   
-		amount: 100,	
+		value: 100,	
 	}`
 	
-**PATCH** /api/cards/creditLimit/{cardId}
-body 
+**PATCH** /api/cards/setLimit/{cardId}
+body: 
 	`{   
-		amount: 100,
+		value: 100,
 	}` 
 
 
