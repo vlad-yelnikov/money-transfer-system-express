@@ -1,4 +1,4 @@
-# money-counting-system
+# money-transfer-system
 
 # Users
 **GET** /api/users/search?name={name}&sort={field}&order={asc/desc}&page={pageNumber}&size={pageAmount}
